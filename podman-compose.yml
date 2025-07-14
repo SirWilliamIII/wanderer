@@ -1,0 +1,201 @@
+# podman-compose.yml - Secure 3-region simulation
+version: '3.8'
+
+services:
+  # Sydney region simulation
+  wanderer-sydney:
+    build:
+      context: .
+      dockerfile: Containerfile
+    container_name: wanderer-sydney
+    hostname: sydney.wanderer.local
+    environment:
+      - NODE_ENV=production
+      - REGION=sydney
+      - REGION_CODE=syd
+      - TIMEZONE=Australia/Sydney
+      - SCRAPER_ENCRYPTION_KEY=${SCRAPER_ENCRYPTION_KEY}
+      - BASIC_PROXIES=${BASIC_PROXIES}
+      - PREMIUM_PROXIES=${PREMIUM_PROXIES}
+      - SCRAPER_TARGETS=${SCRAPER_TARGETS}
+      - USE_TOR=true
+      - TOR_EXIT_NODES="{au},{nz},{sg}"
+      - USER_AGENT_REGION=oceania
+    volumes:
+      - wanderer_data_sydney:/app/storage
+      - /tmp/logs-sydney:/app/logs
+    ports:
+      - "3001:3000"
+    networks:
+      - wanderer_network_sydney
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=100m
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.8'
+        reservations:
+          memory: 256M
+          cpus: '0.2'
+
+  # Chicago region simulation  
+  scraper-chicago:
+    build:
+      context: .
+      dockerfile: Containerfile
+    container_name: scraper-chicago
+    hostname: chicago.scraper.local
+    environment:
+      - NODE_ENV=production
+      - REGION=chicago
+      - REGION_CODE=ord
+      - TIMEZONE=America/Chicago
+      - SCRAPER_ENCRYPTION_KEY=${SCRAPER_ENCRYPTION_KEY}
+      - BASIC_PROXIES=${BASIC_PROXIES}
+      - PREMIUM_PROXIES=${PREMIUM_PROXIES}
+      - SCRAPER_TARGETS=${SCRAPER_TARGETS}
+      - USE_TOR=true
+      - TOR_EXIT_NODES="{us},{ca},{mx}"
+      - USER_AGENT_REGION=north_america
+    volumes:
+      - scraper_data_chicago:/app/storage
+      - /tmp/logs-chicago:/app/logs
+    ports:
+      - "3002:3000"
+    networks:
+      - scraper_network_chicago
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=100m
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.8'
+        reservations:
+          memory: 256M
+          cpus: '0.2'
+
+  # Frankfurt region simulation
+  scraper-frankfurt:
+    build:
+      context: .
+      dockerfile: Containerfile
+    container_name: scraper-frankfurt
+    hostname: frankfurt.scraper.local
+    environment:
+      - NODE_ENV=production
+      - REGION=frankfurt
+      - REGION_CODE=fra
+      - TIMEZONE=Europe/Berlin
+      - SCRAPER_ENCRYPTION_KEY=${SCRAPER_ENCRYPTION_KEY}
+      - BASIC_PROXIES=${BASIC_PROXIES}
+      - PREMIUM_PROXIES=${PREMIUM_PROXIES}
+      - SCRAPER_TARGETS=${SCRAPER_TARGETS}
+      - USE_TOR=true
+      - TOR_EXIT_NODES="{de},{nl},{ch},{fr}"
+      - USER_AGENT_REGION=europe
+    volumes:
+      - scraper_data_frankfurt:/app/storage
+      - /tmp/logs-frankfurt:/app/logs
+    ports:
+      - "3003:3000"
+    networks:
+      - scraper_network_frankfurt
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=100m
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.8'
+        reservations:
+          memory: 256M
+          cpus: '0.2'
+
+  # Load balancer to distribute requests
+  nginx-lb:
+    image: nginx:alpine
+    container_name: scraper-loadbalancer
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+      - nginx_logs:/var/log/nginx
+    networks:
+      - scraper_network_sydney
+      - scraper_network_chicago
+      - scraper_network_frankfurt
+    restart: unless-stopped
+    depends_on:
+      - scraper-sydney
+      - scraper-chicago
+      - scraper-frankfurt
+
+  # Redis for coordination (optional)
+  redis:
+    image: redis:7-alpine
+    container_name: scraper-redis
+    command: redis-server --appendonly no --save "" --maxmemory 256mb
+    networks:
+      - scraper_network_sydney
+      - scraper_network_chicago
+      - scraper_network_frankfurt
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /data:rw,noexec,nosuid,size=256m
+
+volumes:
+  scraper_data_sydney:
+    driver: local
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+      o: size=2G,uid=1001,gid=1001
+  scraper_data_chicago:
+    driver: local
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+      o: size=2G,uid=1001,gid=1001
+  scraper_data_frankfurt:
+    driver: local
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+      o: size=2G,uid=1001,gid=1001
+  nginx_logs:
+
+networks:
+  scraper_network_sydney:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
+  scraper_network_chicago:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.22.0.0/16
+  scraper_network_frankfurt:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.23.0.0/16
