@@ -1,0 +1,24 @@
+{
+  "name": "wanderer",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Professional web scraper with wander and strict modes",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "wander": "WANDERER_MODE=wander node src/index.js",
+    "strict": "WANDERER_MODE=strict node src/index.js",
+    "dev": "node --inspect src/index.js"
+  },
+  "dependencies": {
+    "crawlee": "^3.13.10",
+    "mongoose": "^8.16.3",
+    "playwright": "^1.54.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
