@@ -1,0 +1,9 @@
+{
+	"id": "EZOQZU4xDCnl6hK",
+	"json": "{\"id\":\"EZOQZU4xDCnl6hK\",\"url\":\"https://github.com/trending?spoken_language_code=ce\",\"loadedUrl\":\"https://github.com/trending?spoken_language_code=ce\",\"uniqueKey\":\"https://github.com/trending?spoken_language_code=ce\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:43:32.512Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://github.com/trending?spoken_language_code=ce",
+	"url": "https://github.com/trending?spoken_language_code=ce"
+}

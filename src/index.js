@@ -14,7 +14,9 @@ async function main() {
         // Target URLs
         targets: process.env.WANDERER_TARGETS?.split(',') || [
             'https://example.com',
-            'https://news.ycombinator.com'
+            'https://www.whitehouse.gov/',
+            'https://github.com/trending',
+            'https://formula1.com/'
         ],
         
         // Custom proxy configuration (optional)
@@ -24,14 +26,17 @@ async function main() {
         }
     };
     
-    console.log(`📋 Configuration:`, {
-        mode: config.mode,
-        targets: config.targets.length,
-        proxies: {
-            basic: config.proxies.basic.length,
-            premium: config.proxies.premium.length
-        }
-    });
+// Example proxy tiers (not used directly, for reference)
+// const PROXY_TIERS = {
+//   basic: [
+//       'http://proxy1.example.com:8080',
+//       'http://proxy2.example.com:8080'
+//   ],
+//   premium: [
+//       'http://premium1.proxy.com:8080'
+//   ]
+// };
+    
     
     let scraperManager;
     
@@ -47,13 +52,13 @@ async function main() {
         let crawler;
         if (config.mode === 'wander') {
             crawler = createWanderCrawler(scraperManager);
-            console.log('🔍 WANDER MODE: Aggressive discovery enabled');
+            console.log('WANDER MODE: Aggressive discovery enabled');
             console.log('   • Following all links');
             console.log('   • High concurrency');
             console.log('   • Deep exploration');
         } else {
             crawler = createStrictCrawler(scraperManager);
-            console.log('🎯 STRICT MODE: Respectful & targeted scraping');
+            console.log('STRICT MODE: Respectful & targeted scraping');
             console.log('   • Respecting robots.txt patterns');
             console.log('   • Lower concurrency');
             console.log('   • Focused content extraction');

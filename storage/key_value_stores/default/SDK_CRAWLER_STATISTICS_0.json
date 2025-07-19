@@ -1,27 +1,102 @@
 {
-  "requestsFinished": 2,
-  "requestsFailed": 0,
-  "requestsRetries": 0,
-  "requestsFailedPerMinute": 0,
-  "requestsFinishedPerMinute": 23,
-  "requestMinDurationMillis": 2752,
-  "requestMaxDurationMillis": 5058,
-  "requestTotalFailedDurationMillis": 0,
-  "requestTotalFinishedDurationMillis": 7810,
-  "crawlerStartedAt": "2025-07-14T01:05:38.694Z",
-  "crawlerFinishedAt": "2025-07-14T01:05:43.807Z",
-  "statsPersistedAt": "2025-07-14T01:05:43.807Z",
-  "crawlerRuntimeMillis": 5132,
-  "crawlerLastStartTimestamp": 1752455138675,
+  "requestsFinished": 131,
+  "requestsFailed": 12,
+  "requestsRetries": 36,
+  "requestsFailedPerMinute": 5,
+  "requestsFinishedPerMinute": 65,
+  "requestMinDurationMillis": 2667,
+  "requestMaxDurationMillis": 11527,
+  "requestTotalFailedDurationMillis": 35953,
+  "requestTotalFinishedDurationMillis": 633625,
+  "crawlerStartedAt": "2025-07-19T05:41:39.622Z",
+  "crawlerFinishedAt": null,
+  "statsPersistedAt": "2025-07-19T05:43:39.677Z",
+  "crawlerRuntimeMillis": 120138,
+  "crawlerLastStartTimestamp": 1752903699539,
   "requestRetryHistogram": [
-    2
+    107,
+    7,
+    9,
+    13,
+    5,
+    null,
+    1,
+    1
   ],
   "statsId": 0,
-  "requestAvgFailedDurationMillis": null,
-  "requestAvgFinishedDurationMillis": 3905,
-  "requestTotalDurationMillis": 7810,
-  "requestsTotal": 2,
-  "requestsWithStatusCode": {},
-  "errors": {},
-  "retryErrors": {}
+  "requestAvgFailedDurationMillis": 2996,
+  "requestAvgFinishedDurationMillis": 4837,
+  "requestTotalDurationMillis": 669578,
+  "requestsTotal": 143,
+  "requestsWithStatusCode": {
+    "200": 142,
+    "429": 16
+  },
+  "errors": {
+    "/Users/will/Programming/WebScraping/wanderer/src/wanderCrawler.js:43:28": {
+      "missing error code": {
+        "TimeoutError": {
+          "page.waitForLoadState: Timeout 10000ms exceeded.": {
+            "count": 3
+          }
+        }
+      }
+    },
+    "/Users/will/Programming/WebScraping/wanderer/node_modules/@crawlee/playwright/internals/utils/playwright-utils.js:166:17": {
+      "missing error code": {
+        "Error": {
+          "page.goto: net::ERR_HTTP2_SERVER_REFUSED_STREAM at _": {
+            "count": 8
+          }
+        }
+      }
+    },
+    "/Users/will/Programming/WebScraping/wanderer/node_modules/@crawlee/basic/internals/basic-crawler.js:835:19": {
+      "missing error code": {
+        "Error": {
+          "Request blocked - received 429 status code.": {
+            "count": 1
+          }
+        }
+      }
+    }
+  },
+  "retryErrors": {
+    "/Users/will/Programming/WebScraping/wanderer/node_modules/@crawlee/playwright/internals/utils/playwright-utils.js:166:17": {
+      "missing error code": {
+        "Error": {
+          "page.goto: net::ERR_HTTP2_SERVER_REFUSED_STREAM at _": {
+            "count": 34
+          }
+        }
+      }
+    },
+    "/Users/will/Programming/WebScraping/wanderer/node_modules/@crawlee/browser/internals/browser-crawler.js:367:19": {
+      "missing error code": {
+        "Error": {
+          "Detected a session error, rotating session... ": {
+            "count": 72
+          }
+        }
+      }
+    },
+    "/Users/will/Programming/WebScraping/wanderer/src/wanderCrawler.js:43:28": {
+      "missing error code": {
+        "TimeoutError": {
+          "page.waitForLoadState: Timeout 10000ms exceeded.": {
+            "count": 7
+          }
+        }
+      }
+    },
+    "/Users/will/Programming/WebScraping/wanderer/node_modules/@crawlee/basic/internals/basic-crawler.js:835:19": {
+      "missing error code": {
+        "Error": {
+          "Request blocked - received 429 status code.": {
+            "count": 15
+          }
+        }
+      }
+    }
+  }
 }

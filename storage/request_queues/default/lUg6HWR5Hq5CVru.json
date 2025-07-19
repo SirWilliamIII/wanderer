@@ -1,0 +1,9 @@
+{
+	"id": "lUg6HWR5Hq5CVru",
+	"json": "{\"id\":\"lUg6HWR5Hq5CVru\",\"url\":\"https://github.com/trending?spoken_language_code=co\",\"loadedUrl\":\"https://github.com/trending?spoken_language_code=co\",\"uniqueKey\":\"https://github.com/trending?spoken_language_code=co\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:43:33.195Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://github.com/trending?spoken_language_code=co",
+	"url": "https://github.com/trending?spoken_language_code=co"
+}

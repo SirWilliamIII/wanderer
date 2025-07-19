@@ -1,0 +1,9 @@
+{
+	"id": "gLqmzgxTl0Rcibo",
+	"json": "{\"id\":\"gLqmzgxTl0Rcibo\",\"url\":\"https://github.com/trending/gemfile.lock?since=daily\",\"uniqueKey\":\"https://github.com/trending/gemfile.lock?since=daily\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\"}}}",
+	"method": "GET",
+	"orderNo": 1752903710055,
+	"retryCount": 0,
+	"uniqueKey": "https://github.com/trending/gemfile.lock?since=daily",
+	"url": "https://github.com/trending/gemfile.lock?since=daily"
+}

@@ -1,0 +1,9 @@
+{
+	"id": "VNVgbeTDVVTWDcU",
+	"json": "{\"id\":\"VNVgbeTDVVTWDcU\",\"url\":\"https://www.whitehouse.gov/america250/founders-museum/\",\"loadedUrl\":\"https://www.whitehouse.gov/america250/founders-museum/\",\"uniqueKey\":\"https://www.whitehouse.gov/america250/founders-museum\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://www.whitehouse.gov/\",\"discoveredAt\":\"2025-07-19T05:41:46.813Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:42:14.335Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.whitehouse.gov/america250/founders-museum",
+	"url": "https://www.whitehouse.gov/america250/founders-museum/"
+}

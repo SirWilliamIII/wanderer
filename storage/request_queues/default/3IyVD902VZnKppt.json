@@ -1,0 +1,9 @@
+{
+	"id": "3IyVD902VZnKppt",
+	"json": "{\"id\":\"3IyVD902VZnKppt\",\"url\":\"https://github.com/features/codespaces\",\"loadedUrl\":\"https://github.com/features/codespaces\",\"uniqueKey\":\"https://github.com/features/codespaces\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:42:42.773Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://github.com/features/codespaces",
+	"url": "https://github.com/features/codespaces"
+}

@@ -1,0 +1,7 @@
+name = "wanderer-proxy"
+main = "src/worker.js"
+workers_dev = true
+compatibility_date = "2025-07-19"
+
+[observability]
+enabled = true

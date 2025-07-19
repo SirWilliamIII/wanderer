@@ -1,0 +1,9 @@
+{
+	"id": "6opwqYvVORnYybu",
+	"json": "{\"id\":\"6opwqYvVORnYybu\",\"url\":\"https://www.whitehouse.gov/investments/\",\"loadedUrl\":\"https://www.whitehouse.gov/investments/\",\"uniqueKey\":\"https://www.whitehouse.gov/investments\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://www.whitehouse.gov/\",\"discoveredAt\":\"2025-07-19T05:41:46.813Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:42:31.306Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.whitehouse.gov/investments",
+	"url": "https://www.whitehouse.gov/investments/"
+}

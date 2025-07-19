@@ -30,20 +30,32 @@ export class ScraperManager {
         const basicProxies = this.customProxies.basic || [];
         const premiumProxies = this.customProxies.premium || [];
         
+        // Add some free public proxies for testing (use with caution)
+        const freeProxies = [
+            // These are examples - replace with working proxies
+            // 'http://proxy1.example.com:8080',
+            // 'http://proxy2.example.com:3128'
+        ];
+        
+        // Combine free proxies with basic tier
+        const allBasicProxies = [...freeProxies, ...basicProxies].filter(Boolean);
+        
         // Only create ProxyConfiguration if we actually have proxies
-        if (basicProxies.length === 0 && premiumProxies.length === 0) {
+        if (allBasicProxies.length === 0 && premiumProxies.length === 0) {
             console.log('🌐 No proxies configured - using direct connection');
             return null; // No proxy configuration
         }
         
         const tieredProxies = [[null]]; // Start with no proxy
         
-        if (basicProxies.length > 0) {
-            tieredProxies.push(basicProxies);
+        if (allBasicProxies.length > 0) {
+            tieredProxies.push(allBasicProxies);
+            console.log(`🔄 Basic proxy tier: ${allBasicProxies.length} proxies`);
         }
         
         if (premiumProxies.length > 0) {
             tieredProxies.push(premiumProxies);
+            console.log(`💎 Premium proxy tier: ${premiumProxies.length} proxies`);
         }
         
         console.log(`🔄 Proxy tiers configured: ${tieredProxies.length - 1} tier(s)`);
@@ -100,17 +112,54 @@ export class ScraperManager {
         const text = `${data.title || ''} ${data.description || ''} ${data.text || ''}`.toLowerCase();
         const url = (data.url || '').toLowerCase();
         
-        // Simple keyword-based classification
+        // GitHub-specific classification (highest priority)
+        if (url.includes('github.com') || url.includes('github.io') || 
+            text.includes('github') || text.includes('repository') || 
+            text.includes('pull request') || text.includes('commit') ||
+            text.includes('open source') || text.includes('git clone')) {
+            return 'github';
+        }
+        
+        // Big Technology companies
+        if (url.includes('apple.com') || url.includes('microsoft.com') || 
+            url.includes('google.com') || url.includes('amazon.com') ||
+            url.includes('meta.com') || url.includes('facebook.com') ||
+            url.includes('twitter.com') || url.includes('x.com') ||
+            url.includes('tesla.com') || url.includes('netflix.com') ||
+            text.includes('artificial intelligence') || text.includes('machine learning') ||
+            text.includes('cloud computing') || text.includes('tech earnings')) {
+            return 'big_technology';
+        }
+        
+        // Local area data (geographic, local news, weather, etc.)
+        if (text.includes('local') || text.includes('weather') ||
+            text.includes('traffic') || text.includes('community') ||
+            text.includes('city') || text.includes('county') ||
+            text.includes('municipal') || text.includes('neighborhood') ||
+            url.includes('.gov') || text.includes('government')) {
+            return 'local_area_data';
+        }
+        
+        // E-commerce
         if (data.products?.length > 0 || text.includes('price') || text.includes('buy') || url.includes('shop')) {
             return 'ecommerce';
         }
-        if (text.includes('news') || text.includes('article') || url.includes('news')) {
+        
+        // News articles
+        if (text.includes('news') || text.includes('article') || url.includes('news') ||
+            text.includes('breaking') || text.includes('report') || text.includes('journalist')) {
             return 'news';
         }
-        if (text.includes('api') || text.includes('documentation') || url.includes('docs')) {
+        
+        // Documentation
+        if (text.includes('api') || text.includes('documentation') || url.includes('docs') ||
+            text.includes('tutorial') || text.includes('guide') || text.includes('reference')) {
             return 'docs';
         }
-        if (text.includes('forum') || text.includes('discussion') || url.includes('forum')) {
+        
+        // Forums and discussions
+        if (text.includes('forum') || text.includes('discussion') || url.includes('forum') ||
+            text.includes('reddit') || text.includes('comment') || text.includes('thread')) {
             return 'forum';
         }
         
@@ -137,27 +186,64 @@ export class ScraperManager {
     }
 
     // Save scraped data to MongoDB with classification
+    // Ensure indexes on url and timestamp fields (run once per app start)
+    static async ensureIndexes() {
+      try {
+        await ScrapedData.collection.createIndex({ url: 1 });
+        await ScrapedData.collection.createIndex({ timestamp: -1 });
+      } catch (error) {
+        console.warn('⚠️  Failed to create indexes:', error.message);
+      }
+    }
+
+    // Batch insert buffer
+    _batchBuffer = [];
+    _batchTimer = null;
+    _batchSize = 20; // Tune as needed
+    _batchDelay = 1000; // ms
+
     async saveData(data) {
-        if (!this.dbConnected) {
-            // Fallback to console logging if database is not connected
-            console.log('📁 Saving to local storage (DB not connected):', data.url);
-            return;
+      if (!this.dbConnected) {
+        // Fallback to console logging if database is not connected
+        console.log('📁 Saving to local storage (DB not connected):', data.url);
+        return;
+      }
+
+      try {
+        // Add simple classification
+        const category = this.classifyDocument(data);
+        const enrichedData = {
+          ...data,
+          category,
+          collectionHint: await this.getCollectionName(category, data.mode || this.mode)
+        };
+
+        // Batch insert logic
+        this._batchBuffer.push(enrichedData);
+
+        if (this._batchBuffer.length >= this._batchSize) {
+          await this.flushBatch();
+        } else if (!this._batchTimer) {
+          this._batchTimer = setTimeout(() => this.flushBatch(), this._batchDelay);
         }
-        
-        try {
-            // Add simple classification
-            const category = this.classifyDocument(data);
-            const enrichedData = {
-                ...data,
-                category,
-                collectionHint: await this.getCollectionName(category, data.mode || this.mode)
-            };
-            
-            await ScrapedData.create(enrichedData);
-            this.log('info', `💾 Data saved to MongoDB [${category}]: ${data.url}`);
-        } catch (error) {
-            this.log('error', `Failed to save data to MongoDB: ${data.url}`, error);
-        }
+      } catch (error) {
+        this.log('error', `Failed to queue data for MongoDB: ${data.url}`, error);
+      }
+    }
+
+    async flushBatch() {
+      if (!this.dbConnected || this._batchBuffer.length === 0) {
+        this._batchTimer = null;
+        return;
+      }
+      const batch = this._batchBuffer.splice(0, this._batchBuffer.length);
+      this._batchTimer = null;
+      try {
+        await ScrapedData.insertMany(batch, { ordered: false });
+        this.log('info', `💾 Batch saved to MongoDB [${batch.length} items]`);
+      } catch (error) {
+        this.log('error', 'Failed to batch save data to MongoDB', error);
+      }
     }
     
     // Check if URL was already scraped recently

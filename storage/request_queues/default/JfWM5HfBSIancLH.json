@@ -1,0 +1,9 @@
+{
+	"id": "JfWM5HfBSIancLH",
+	"json": "{\"id\":\"JfWM5HfBSIancLH\",\"url\":\"https://github.com/trending/grammatical-framework?since=daily\",\"uniqueKey\":\"https://github.com/trending/grammatical-framework?since=daily\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\"}}}",
+	"method": "GET",
+	"orderNo": 1752903710068,
+	"retryCount": 0,
+	"uniqueKey": "https://github.com/trending/grammatical-framework?since=daily",
+	"url": "https://github.com/trending/grammatical-framework?since=daily"
+}

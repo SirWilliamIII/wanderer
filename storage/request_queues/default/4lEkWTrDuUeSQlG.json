@@ -1,0 +1,9 @@
+{
+	"id": "4lEkWTrDuUeSQlG",
+	"json": "{\"id\":\"4lEkWTrDuUeSQlG\",\"url\":\"https://www.formula1.com/#maincontent\",\"uniqueKey\":\"https://www.formula1.com\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://formula1.com/\",\"discoveredAt\":\"2025-07-19T05:41:52.687Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\"}}}",
+	"method": "GET",
+	"orderNo": 1752903712696,
+	"retryCount": 0,
+	"uniqueKey": "https://www.formula1.com",
+	"url": "https://www.formula1.com/#maincontent"
+}

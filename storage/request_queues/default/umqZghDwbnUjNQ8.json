@@ -1,0 +1,9 @@
+{
+	"id": "umqZghDwbnUjNQ8",
+	"json": "{\"id\":\"umqZghDwbnUjNQ8\",\"url\":\"https://github.com/trending?spoken_language_code=no\",\"uniqueKey\":\"https://github.com/trending?spoken_language_code=no\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\"}}}",
+	"method": "GET",
+	"orderNo": 1752904010585,
+	"retryCount": 0,
+	"uniqueKey": "https://github.com/trending?spoken_language_code=no",
+	"url": "https://github.com/trending?spoken_language_code=no"
+}

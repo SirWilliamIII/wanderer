@@ -1,0 +1,9 @@
+{
+	"id": "ndjP4x47iBJVgTI",
+	"json": "{\"id\":\"ndjP4x47iBJVgTI\",\"url\":\"https://account.formula1.com/#/en/login?redirect=https%3A%2F%2Fwww.formula1.com%2Fen&lead_source=web_f1core\",\"uniqueKey\":\"https://account.formula1.com\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://formula1.com/\",\"discoveredAt\":\"2025-07-19T05:41:52.687Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\"}}}",
+	"method": "GET",
+	"orderNo": 1752903712700,
+	"retryCount": 0,
+	"uniqueKey": "https://account.formula1.com",
+	"url": "https://account.formula1.com/#/en/login?redirect=https%3A%2F%2Fwww.formula1.com%2Fen&lead_source=web_f1core"
+}

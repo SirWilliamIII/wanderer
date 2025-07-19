@@ -2,10 +2,10 @@
 export const WANDERER_CONFIG = {
     // Wander mode - aggressive discovery
     WANDER: {
-        maxRequestsPerCrawl: 10000,
+        maxRequestsPerCrawl: 1000,
         maxConcurrency: 10,
         requestHandlerTimeoutSecs: 60,
-        minDelayBetweenRequests: 1000,
+        minDelayBetweenRequests: 2000,
         maxDelayBetweenRequests: 3000,
         linkStrategy: 'all',
         selectors: 'a[href]' // Follow all links
@@ -13,13 +13,13 @@ export const WANDERER_CONFIG = {
     
     // Strict mode - respectful & targeted
     STRICT: {
-        maxRequestsPerCrawl: 1000,
-        maxConcurrency: 2,
-        requestHandlerTimeoutSecs: 30,
-        minDelayBetweenRequests: 2000,
-        maxDelayBetweenRequests: 5000,
+        maxRequestsPerCrawl: 2000,
+        maxConcurrency: 5,
+        requestHandlerTimeoutSecs: 60,
+        minDelayBetweenRequests: 1000,
+        maxDelayBetweenRequests: 2000,
         linkStrategy: 'same-domain',
-        selectors: 'a[href*="/product/"], a[href*="/article/"], a[href*="/blog/"]' // Targeted links
+        selectors: 'a[href]' // Follow all links (less restrictive)
     },
     
     // Proxy tiers - add your own proxy URLs here
@@ -60,9 +60,6 @@ export const WANDERER_CONFIG = {
     RESTRICTED_PATTERNS: [
         '/admin/',
         '/private/',
-        '/api/',
-        '/login/',
-        '/signup/',
         '.pdf',
         '.zip',
         '.exe'
@@ -76,7 +73,7 @@ export const WANDERER_CONFIG = {
             serverSelectionTimeoutMS: 5000
         },
         collections: {
-            scraped_data: 'scraped_data'
+            scraped_data: 'wanderer'
         }
     },
     
@@ -86,7 +83,7 @@ export const WANDERER_CONFIG = {
         COLLECTION_SIZE_THRESHOLD: parseInt(process.env.COLLECTION_THRESHOLD) || 1000,
         
         // Simple classification categories
-        CATEGORIES: ['ecommerce', 'news', 'docs', 'forum', 'general'],
+        CATEGORIES: ['ecommerce', 'news', 'docs', 'forum', 'github', 'big_technology', 'local_area_data', 'general', 'other'],
         
         // Auto-create monthly collections
         AUTO_CREATE_COLLECTIONS: true

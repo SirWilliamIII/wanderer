@@ -1,0 +1,9 @@
+{
+	"id": "iZqClzi5HO6prNr",
+	"json": "{\"id\":\"iZqClzi5HO6prNr\",\"url\":\"https://github.com/trending/gosu?since=daily\",\"uniqueKey\":\"https://github.com/trending/gosu?since=daily\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\"}}}",
+	"method": "GET",
+	"orderNo": 1752903710068,
+	"retryCount": 0,
+	"uniqueKey": "https://github.com/trending/gosu?since=daily",
+	"url": "https://github.com/trending/gosu?since=daily"
+}

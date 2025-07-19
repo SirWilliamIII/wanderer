@@ -1,0 +1,9 @@
+{
+	"id": "dL78jbwEzXsUGFw",
+	"json": "{\"id\":\"dL78jbwEzXsUGFw\",\"url\":\"https://www.instagram.com/whitehouse/\",\"loadedUrl\":\"https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fwhitehouse%2F&is_from_rle\",\"uniqueKey\":\"https://www.instagram.com/whitehouse\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://www.whitehouse.gov/\",\"discoveredAt\":\"2025-07-19T05:41:46.813Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:42:32.751Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.instagram.com/whitehouse",
+	"url": "https://www.instagram.com/whitehouse/"
+}

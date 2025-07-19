@@ -1,0 +1,9 @@
+{
+	"id": "CzOuKtbQ1LGctFD",
+	"json": "{\"id\":\"CzOuKtbQ1LGctFD\",\"url\":\"https://github.com/solutions/industry\",\"loadedUrl\":\"https://github.com/solutions/industry\",\"uniqueKey\":\"https://github.com/solutions/industry\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:43:04.283Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://github.com/solutions/industry",
+	"url": "https://github.com/solutions/industry"
+}

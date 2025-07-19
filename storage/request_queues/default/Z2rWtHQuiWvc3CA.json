@@ -1,0 +1,9 @@
+{
+	"id": "Z2rWtHQuiWvc3CA",
+	"json": "{\"id\":\"Z2rWtHQuiWvc3CA\",\"url\":\"https://www.whitehouse.gov/administration/melania-trump/\",\"loadedUrl\":\"https://www.whitehouse.gov/administration/melania-trump/\",\"uniqueKey\":\"https://www.whitehouse.gov/administration/melania-trump\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://www.whitehouse.gov/\",\"discoveredAt\":\"2025-07-19T05:41:46.813Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:42:06.327Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.whitehouse.gov/administration/melania-trump",
+	"url": "https://www.whitehouse.gov/administration/melania-trump/"
+}

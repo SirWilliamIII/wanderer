@@ -1,0 +1,9 @@
+{
+	"id": "9SsGKNm5emcDCFR",
+	"json": "{\"id\":\"9SsGKNm5emcDCFR\",\"url\":\"https://www.whitehouse.gov/presidential-actions/presidential-memoranda/\",\"loadedUrl\":\"https://www.whitehouse.gov/presidential-actions/presidential-memoranda/\",\"uniqueKey\":\"https://www.whitehouse.gov/presidential-actions/presidential-memoranda\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://www.whitehouse.gov/\",\"discoveredAt\":\"2025-07-19T05:41:46.813Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:42:02.897Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.whitehouse.gov/presidential-actions/presidential-memoranda",
+	"url": "https://www.whitehouse.gov/presidential-actions/presidential-memoranda/"
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard Test</title>
+</head>
+<body>
+    <h1>API Test</h1>
+    <div id="weather-test"></div>
+    <div id="crypto-test"></div>
+    <div id="market-test"></div>
+    
+    <script>
+    async function testAPIs() {
+        console.log('Testing APIs...');
+        
+        try {
+            // Test Weather
+            const weatherResponse = await fetch('/api/weather');
+            const weather = await weatherResponse.json();
+            document.getElementById('weather-test').innerHTML = `
+                <h3>Weather: ${weather.location}</h3>
+                <p>Temperature: ${weather.temperature}°C</p>
+                <p>Description: ${weather.description}</p>
+            `;
+            
+            // Test Crypto
+            const cryptoResponse = await fetch('/api/crypto');
+            const crypto = await cryptoResponse.json();
+            document.getElementById('crypto-test').innerHTML = `
+                <h3>Crypto (${crypto.crypto.length} coins)</h3>
+                <p>Bitcoin: $${crypto.crypto.find(c => c.name === 'Bitcoin')?.price || 'N/A'}</p>
+            `;
+            
+            // Test Market
+            const marketResponse = await fetch('/api/market');
+            const market = await marketResponse.json();
+            document.getElementById('market-test').innerHTML = `
+                <h3>Market (${market.indices.length} indices)</h3>
+                <p>S&P 500: ${market.indices.find(i => i.name === 'S&P 500')?.value || 'N/A'}</p>
+            `;
+            
+            console.log('All APIs working!');
+        } catch (error) {
+            console.error('API test failed:', error);
+            document.body.innerHTML += `<p style="color: red;">Error: ${error.message}</p>`;
+        }
+    }
+    
+    testAPIs();
+    </script>
+</body>
+</html>

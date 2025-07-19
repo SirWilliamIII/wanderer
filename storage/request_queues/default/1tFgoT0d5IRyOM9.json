@@ -1,0 +1,9 @@
+{
+	"id": "1tFgoT0d5IRyOM9",
+	"json": "{\"id\":\"1tFgoT0d5IRyOM9\",\"url\":\"https://github.com/solutions/use-case/devsecops\",\"loadedUrl\":\"https://github.com/solutions/use-case/devsecops\",\"uniqueKey\":\"https://github.com/solutions/use-case/devsecops\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:42:57.638Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://github.com/solutions/use-case/devsecops",
+	"url": "https://github.com/solutions/use-case/devsecops"
+}

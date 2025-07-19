@@ -51,11 +51,18 @@ export function createWanderCrawler(scraperManager) {
                     const links = Array.from(document.querySelectorAll('a[href]'));
                     const images = Array.from(document.querySelectorAll('img[src]'));
                     
+                    // Try to find article content using common selectors
+                    const articleSelectors = 'article, .article, .content, .post, .entry, main, .main-content, .story-body, .article-body, .post-content';
+                    const articleElement = document.querySelector(articleSelectors);
+                    const mainText = articleElement ? 
+                        articleElement.innerText.trim().slice(0, 5000) : 
+                        document.body.innerText.trim().slice(0, 5000);
+                    
                     return {
                         url: window.location.href,
                         title: document.title,
                         description: document.querySelector('meta[name="description"]')?.content || '',
-                        text: document.body.innerText.slice(0, 2000), // First 2k chars
+                        text: document.body.innerText.slice(0, 1000), // First 1k chars for compatibility
                         wordCount: document.body.innerText.split(/\s+/).length,
                         linkCount: links.length,
                         imageCount: images.length,
@@ -64,6 +71,31 @@ export function createWanderCrawler(scraperManager) {
                             h2: Array.from(document.querySelectorAll('h2')).map(h => h.textContent.trim()).slice(0, 5),
                             h3: Array.from(document.querySelectorAll('h3')).map(h => h.textContent.trim()).slice(0, 5)
                         },
+                        
+                        // Full article content extraction
+                        articleContent: {
+                            mainText: mainText,
+                            
+                            // Extract paragraphs from article area
+                            paragraphs: Array.from(document.querySelectorAll('article p, .article p, .content p, .post p, .entry p, main p'))
+                                .map(p => p.textContent.trim())
+                                .filter(p => p.length > 20)
+                                .slice(0, 20),
+                            
+                            // Extract code blocks (useful for GitHub and tech content)
+                            codeBlocks: Array.from(document.querySelectorAll('pre, code, .code, .highlight'))
+                                .map(code => code.textContent.trim())
+                                .filter(code => code.length > 10)
+                                .slice(0, 10),
+                            
+                            // Extract images with metadata
+                            images: Array.from(document.querySelectorAll('img')).map(img => ({
+                                src: img.src,
+                                alt: img.alt,
+                                title: img.title
+                            })).slice(0, 10)
+                        },
+                        
                         timestamp: new Date().toISOString(),
                         statusCode: 200 // Successful load
                     };
