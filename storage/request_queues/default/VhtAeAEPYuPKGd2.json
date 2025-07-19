@@ -1,9 +1,0 @@
-{
-	"id": "VhtAeAEPYuPKGd2",
-	"json": "{\"id\":\"VhtAeAEPYuPKGd2\",\"url\":\"https://github.com/features/copilot\",\"loadedUrl\":\"https://github.com/features/copilot\",\"uniqueKey\":\"https://github.com/features/copilot\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:42:40.780Z\"}",
-	"method": "GET",
-	"orderNo": null,
-	"retryCount": 0,
-	"uniqueKey": "https://github.com/features/copilot",
-	"url": "https://github.com/features/copilot"
-}

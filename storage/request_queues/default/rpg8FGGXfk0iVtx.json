@@ -1,9 +1,0 @@
-{
-	"id": "rpg8FGGXfk0iVtx",
-	"json": "{\"id\":\"rpg8FGGXfk0iVtx\",\"url\":\"https://github.com/security/advanced-security\",\"loadedUrl\":\"https://github.com/security/advanced-security\",\"uniqueKey\":\"https://github.com/security/advanced-security\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:42:40.250Z\"}",
-	"method": "GET",
-	"orderNo": null,
-	"retryCount": 0,
-	"uniqueKey": "https://github.com/security/advanced-security",
-	"url": "https://github.com/security/advanced-security"
-}

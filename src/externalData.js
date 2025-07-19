@@ -1,6 +1,7 @@
 // src/externalData.js - External API integrations for news, weather, and events
 import axios from 'axios';
 import dotenv from 'dotenv';
+import { WANDERER_CONFIG } from './config.js';
 dotenv.config();
 
 
@@ -8,6 +9,28 @@ export class ExternalDataService {
     constructor() {
         this.cache = new Map();
         this.cacheExpiry = 5 * 60 * 1000; // 5 minutes
+    }
+
+    // Wrap requests with CORS proxy if enabled
+    async makeRequest(url, params = {}) {
+        if (WANDERER_CONFIG.CORS_PROXY.enabled && WANDERER_CONFIG.CORS_PROXY.url) {
+            // Use the CORS proxy
+            const targetUrl = new URL(url);
+            if (params.params) {
+                Object.entries(params.params).forEach(([key, value]) => {
+                    targetUrl.searchParams.append(key, value);
+                });
+            }
+            
+            const proxyUrl = `${WANDERER_CONFIG.CORS_PROXY.url}/?url=${encodeURIComponent(targetUrl.toString())}`;
+            return axios.get(proxyUrl, { 
+                timeout: params.timeout || 10000,
+                headers: params.headers || {}
+            });
+        } else {
+            // Direct request
+            return axios.get(url, params);
+        }
     }
 
     // Get cached data or fetch new
@@ -40,7 +63,7 @@ export class ExternalDataService {
         }
 
         return this.getCachedData('weather', async () => {
-            const response = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
+            const response = await this.makeRequest('https://api.openweathermap.org/data/2.5/weather', {
                 params: {
                     lat,
                     lon,
@@ -342,7 +365,7 @@ export class ExternalDataService {
     async getTrendingTech() {
         return this.getCachedData('trending-tech', async () => {
             // Get top stories from Hacker News
-            const topStoriesResponse = await axios.get('https://hacker-news.firebaseio.com/v0/topstories.json', {
+            const topStoriesResponse = await this.makeRequest('https://hacker-news.firebaseio.com/v0/topstories.json', {
                 timeout: 5000
             });
             
@@ -352,7 +375,7 @@ export class ExternalDataService {
             const stories = await Promise.all(
                 topStoryIds.map(async (id) => {
                     try {
-                        const storyResponse = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`, {
+                        const storyResponse = await this.makeRequest(`https://hacker-news.firebaseio.com/v0/item/${id}.json`, {
                             timeout: 3000
                         });
                         return storyResponse.data;
@@ -378,7 +401,7 @@ export class ExternalDataService {
     // Get GitHub trending repositories
     async getTrendingRepos() {
         return this.getCachedData('trending-repos', async () => {
-            const response = await axios.get('https://api.github.com/search/repositories', {
+            const response = await this.makeRequest('https://api.github.com/search/repositories', {
                 params: {
                     q: 'created:>2024-01-01',
                     sort: 'stars',
@@ -403,7 +426,7 @@ export class ExternalDataService {
     // Get crypto prices (using CoinGecko free API)
     async getCryptoPrices() {
         return this.getCachedData('crypto-prices', async () => {
-            const response = await axios.get('https://api.coingecko.com/api/v3/simple/price', {
+            const response = await this.makeRequest('https://api.coingecko.com/api/v3/simple/price', {
                 params: {
                     ids: 'bitcoin,ethereum,binancecoin,cardano,solana',
                     vs_currencies: 'usd',

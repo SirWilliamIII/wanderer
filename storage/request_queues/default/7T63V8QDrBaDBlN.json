@@ -1,9 +1,0 @@
-{
-	"id": "7T63V8QDrBaDBlN",
-	"json": "{\"id\":\"7T63V8QDrBaDBlN\",\"url\":\"https://github.com/trending/developers\",\"loadedUrl\":\"https://github.com/trending/developers\",\"uniqueKey\":\"https://github.com/trending/developers\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:43:19.434Z\"}",
-	"method": "GET",
-	"orderNo": null,
-	"retryCount": 0,
-	"uniqueKey": "https://github.com/trending/developers",
-	"url": "https://github.com/trending/developers"
-}

@@ -1,9 +1,0 @@
-{
-	"id": "cx3rOC6i3tP0rr5",
-	"json": "{\"id\":\"cx3rOC6i3tP0rr5\",\"url\":\"https://github.com/trending/type-language?since=daily\",\"uniqueKey\":\"https://github.com/trending/type-language?since=daily\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.850Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\"}}}",
-	"method": "GET",
-	"orderNo": 1752903710190,
-	"retryCount": 0,
-	"uniqueKey": "https://github.com/trending/type-language?since=daily",
-	"url": "https://github.com/trending/type-language?since=daily"
-}

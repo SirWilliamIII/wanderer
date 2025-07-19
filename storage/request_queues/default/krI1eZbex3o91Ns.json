@@ -1,9 +1,0 @@
-{
-	"id": "krI1eZbex3o91Ns",
-	"json": "{\"id\":\"krI1eZbex3o91Ns\",\"url\":\"https://github.com/trending/altium-designer?since=daily\",\"uniqueKey\":\"https://github.com/trending/altium-designer?since=daily\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\"}}}",
-	"method": "GET",
-	"orderNo": 1752903709977,
-	"retryCount": 0,
-	"uniqueKey": "https://github.com/trending/altium-designer?since=daily",
-	"url": "https://github.com/trending/altium-designer?since=daily"
-}

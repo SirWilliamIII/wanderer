@@ -120,46 +120,105 @@ export class ScraperManager {
             return 'github';
         }
         
+        // Sports
+        if (url.includes('espn.com') || url.includes('theathletic.com') || 
+            url.includes('bleacherreport.com') || url.includes('skysports.com') ||
+            url.includes('formula1.com') || url.includes('pgatour.com') ||
+            url.includes('/sport') || text.includes('sports') || 
+            text.includes('football') || text.includes('basketball') ||
+            text.includes('baseball') || text.includes('soccer') ||
+            text.includes('tennis') || text.includes('golf') ||
+            text.includes('championship') || text.includes('league') ||
+            text.includes('athlete') || text.includes('match') ||
+            text.includes('tournament') || text.includes('playoff')) {
+            return 'sports';
+        }
+        
+        // Science
+        if (url.includes('nature.com') || url.includes('science.org') || 
+            url.includes('scientificamerican.com') || url.includes('sciencedaily.com') ||
+            text.includes('research') || text.includes('study shows') ||
+            text.includes('scientists') || text.includes('researchers') ||
+            text.includes('scientific') || text.includes('experiment') ||
+            text.includes('discovery') || text.includes('peer review') ||
+            text.includes('journal') || text.includes('hypothesis')) {
+            return 'science';
+        }
+        
+        // Rabbit hole - interesting/unusual content
+        if (url.includes('atlasobscura.com') || url.includes('mentalfloss.com') || 
+            url.includes('ridiculouslyinteresting.com') ||
+            text.includes('weird') || text.includes('unusual') ||
+            text.includes('bizarre') || text.includes('mystery') ||
+            text.includes('fascinating') || text.includes('strange') ||
+            text.includes('curious') || text.includes('obscure')) {
+            return 'rabbit_hole';
+        }
+        
         // Big Technology companies
         if (url.includes('apple.com') || url.includes('microsoft.com') || 
             url.includes('google.com') || url.includes('amazon.com') ||
             url.includes('meta.com') || url.includes('facebook.com') ||
             url.includes('twitter.com') || url.includes('x.com') ||
             url.includes('tesla.com') || url.includes('netflix.com') ||
+            url.includes('techcrunch.com') || url.includes('theverge.com') ||
+            url.includes('arstechnica.com') || url.includes('wired.com') ||
+            url.includes('technologyreview.com') || url.includes('stackoverflow.com') ||
             text.includes('artificial intelligence') || text.includes('machine learning') ||
-            text.includes('cloud computing') || text.includes('tech earnings')) {
+            text.includes('cloud computing') || text.includes('tech earnings') ||
+            text.includes('startup') || text.includes('silicon valley')) {
             return 'big_technology';
         }
         
-        // Local area data (geographic, local news, weather, etc.)
-        if (text.includes('local') || text.includes('weather') ||
-            text.includes('traffic') || text.includes('community') ||
-            text.includes('city') || text.includes('county') ||
-            text.includes('municipal') || text.includes('neighborhood') ||
+        // Local news
+        if (url.includes('newsbreak.com') || url.includes('news.google.com') ||
+            url.includes('smartnews.com') || url.includes('apple.com/apple-news') ||
+            (text.includes('local') && text.includes('news')) ||
+            text.includes('neighborhood') || text.includes('community news') ||
+            text.includes('city council') || text.includes('school board')) {
+            return 'local_news';
+        }
+        
+        // Local area data (geographic, weather, etc.)
+        if (text.includes('weather') || text.includes('traffic') || 
+            text.includes('restaurant') || text.includes('yelp') ||
+            text.includes('tripadvisor') || text.includes('city guide') ||
+            text.includes('events near') || text.includes('things to do') ||
             url.includes('.gov') || text.includes('government')) {
             return 'local_area_data';
         }
         
         // E-commerce
-        if (data.products?.length > 0 || text.includes('price') || text.includes('buy') || url.includes('shop')) {
+        if (data.products?.length > 0 || text.includes('price') || 
+            text.includes('buy now') || text.includes('add to cart') ||
+            url.includes('shop') || url.includes('store') ||
+            url.includes('amazon.com') || url.includes('ebay.com') ||
+            url.includes('etsy.com') || url.includes('walmart.com')) {
             return 'ecommerce';
         }
         
-        // News articles
+        // News articles (general news)
         if (text.includes('news') || text.includes('article') || url.includes('news') ||
-            text.includes('breaking') || text.includes('report') || text.includes('journalist')) {
+            text.includes('breaking') || text.includes('report') || 
+            text.includes('journalist') || url.includes('reuters.com') ||
+            url.includes('apnews.com') || url.includes('bbc.com/news') ||
+            url.includes('wsj.com/news')) {
             return 'news';
         }
         
         // Documentation
         if (text.includes('api') || text.includes('documentation') || url.includes('docs') ||
-            text.includes('tutorial') || text.includes('guide') || text.includes('reference')) {
+            text.includes('tutorial') || text.includes('guide') || 
+            text.includes('reference') || text.includes('developer') ||
+            url.includes('developer.') || url.includes('/docs/')) {
             return 'docs';
         }
         
         // Forums and discussions
         if (text.includes('forum') || text.includes('discussion') || url.includes('forum') ||
-            text.includes('reddit') || text.includes('comment') || text.includes('thread')) {
+            text.includes('reddit') || text.includes('comment') || 
+            text.includes('thread') || text.includes('reply') ||
+            url.includes('reddit.com') || url.includes('news.ycombinator.com')) {
             return 'forum';
         }
         

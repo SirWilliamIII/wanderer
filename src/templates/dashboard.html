@@ -654,35 +654,15 @@
       </div>
 
       <div class="news-section">
-        <div class="news-tabs">
+        <div class="news-tabs" id="categoryTabs">
           <button
             class="news-tab active"
-            data-tab="scraped"
-            onclick="switchTab('scraped')"
+            data-category="all"
+            onclick="switchCategory('all')"
           >
-            🔄 Scraping Articles
+            🔄 All Articles
           </button>
-          <button
-            class="news-tab"
-            data-tab="world"
-            onclick="switchTab('world')"
-          >
-            🌍 World Headlines
-          </button>
-          <button
-            class="news-tab"
-            data-tab="bigtech"
-            onclick="switchTab('bigtech')"
-          >
-            💻 Big Technology
-          </button>
-          <button
-            class="news-tab"
-            data-tab="local"
-            onclick="switchTab('local')"
-          >
-            📍 Local Area Data
-          </button>
+          <!-- Category tabs will be dynamically loaded here -->
         </div>
 
         <div class="news-grid" id="newsContent">
@@ -702,9 +682,26 @@
       let currentPage = 1;
       let currentCategory = 'all';
       let currentSearch = '';
-      let currentTab = 'scraped';
       let totalPages = 1;
       let isLoading = false;
+      
+      // Category icons mapping
+      const categoryIcons = {
+        all: '🔄',
+        ecommerce: '🛒',
+        news: '📰',
+        local_news: '📍',
+        big_technology: '💻',
+        sports: '⚽',
+        science: '🔬',
+        rabbit_hole: '🐰',
+        docs: '📚',
+        forum: '💬',
+        github: '⭐',
+        local_area_data: '🌍',
+        general: '📄',
+        other: '❓'
+      };
 
       // JavaScript functions start here
 
@@ -758,218 +755,50 @@
           }
       }
 
-      // Switch between news tabs
-      function switchTab(tab) {
-          currentTab = tab;
+      // Switch between categories
+      function switchCategory(category) {
+          currentCategory = category;
+          currentSearch = '';
+          document.getElementById('searchInput').value = '';
+          
+          // Update active tab
           document.querySelectorAll('.news-tab').forEach(btn => {
-              btn.classList.toggle('active', btn.dataset.tab === tab);
+              btn.classList.toggle('active', btn.dataset.category === category);
           });
 
-          loadContent(tab);
+          loadNews(1, false);
       }
 
-      // Load content based on tab
-      async function loadContent(tab) {
-          const newsContent = document.getElementById('newsContent');
-          newsContent.innerHTML = `
-              <div class="loading">
-                  <div class="loading-spinner"></div>
-                  <p>Loading ${tab} content...</p>
+
+      // Create news item element (for appendChild operations)
+      function createNewsItemElement(article) {
+          const item = document.createElement('div');
+          item.className = 'news-item';
+
+          const timeAgo = getTimeAgo(new Date(article.timestamp));
+          const categoryIcon = categoryIcons[article.category] || '📄';
+
+          item.innerHTML = `
+              <div class="news-title">
+                  <a href="${article.url}" target="_blank">${article.headline || article.title}</a>
+              </div>
+              <div class="news-meta">
+                  <span class="news-source">${categoryIcon} ${article.category}</span>
+                  <span class="news-mode">${article.mode}</span>
+                  <span class="news-time">${timeAgo}</span>
+              </div>
+              <div class="news-description">${article.description || 'No description available'}</div>
+              <div class="article-actions">
+                  <button onclick="fetchFullArticle('${article.url}', this)" class="fetch-article-btn">
+                      📖 Read Full Article
+                  </button>
+              </div>
+              <div class="full-article-content" style="display: none;">
+                  <!-- Full article content will be loaded here -->
               </div>
           `;
 
-          try {
-              let data;
-              switch(tab) {
-                  case 'scraped':
-                      data = await loadScrapedArticles();
-                      break;
-                  case 'world':
-                      data = await loadWorldHeadlines();
-                      break;
-                  case 'bigtech':
-                      data = await loadBigTechNews();
-                      break;
-                  case 'local':
-                      data = await loadLocalAreaData();
-                      break;
-              }
-
-              if (data && data.length > 0) {
-                  newsContent.innerHTML = data.map(item => createNewsItem(item, tab)).join('');
-              } else {
-                  newsContent.innerHTML = `
-                      <div class="empty-state">
-                          <h3>No content available</h3>
-                          <p>Check back later for updates</p>
-                      </div>
-                  `;
-              }
-          } catch (error) {
-              newsContent.innerHTML = `
-                  <div class="empty-state">
-                      <h3>Error loading content</h3>
-                      <p>Please try again later</p>
-                  </div>
-              `;
-          }
-      }
-
-      // Load scraped articles
-      async function loadScrapedArticles() {
-          const response = await fetch('/api/news?limit=20');
-          const data = await response.json();
-          return data.articles;
-      }
-
-      // Load major events
-      async function loadMajorEvents() {
-          const response = await fetch('/api/major-events');
-          const data = await response.json();
-          return data.events;
-      }
-
-      // Load tech news
-      async function loadTechNews() {
-          const response = await fetch('/api/tech-news');
-          const data = await response.json();
-          return data.news;
-      }
-
-      // Load trending tech
-      async function loadTrendingTech() {
-          const response = await fetch('/api/trending-tech');
-          const data = await response.json();
-          return data.trending;
-      }
-
-      // Load trending repos
-      async function loadTrendingRepos() {
-          const response = await fetch('/api/trending-repos');
-          const data = await response.json();
-          return data.repos;
-      }
-
-      // Load sports news
-      async function loadSportsNews() {
-          const response = await fetch('/api/sports-news');
-          const data = await response.json();
-          return data.sports;
-      }
-
-      // Load world headlines
-      async function loadWorldHeadlines() {
-          const response = await fetch('/api/world-headlines');
-          const data = await response.json();
-          return data.headlines;
-      }
-
-      // Load big tech news
-      async function loadBigTechNews() {
-          const response = await fetch('/api/big-tech');
-          const data = await response.json();
-          return data.bigTech;
-      }
-
-      // Load local area data
-      async function loadLocalAreaData() {
-          try {
-              // Try to get location from IP first
-              let locationData = null;
-              try {
-                  const locationResponse = await fetch('/api/location');
-                  locationData = await locationResponse.json();
-              } catch (error) {
-                  console.log('Could not get location from IP for local data:', error);
-              }
-
-              let url = '/api/local-area';
-              if (locationData && locationData.lat && locationData.lon) {
-                  url = `/api/local-area?lat=${locationData.lat}&lon=${locationData.lon}`;
-              }
-
-              const response = await fetch(url);
-              const data = await response.json();
-              return data.localData;
-          } catch (error) {
-              console.error('Error loading local area data:', error);
-              return [];
-          }
-      }
-
-      // Load breaking news (legacy)
-      async function loadBreakingNews() {
-          const response = await fetch('/api/breaking-news');
-          const data = await response.json();
-          return data.breaking;
-      }
-
-      // Create news item HTML
-      function createNewsItem(item, type) {
-          const timeAgo = getTimeAgo(new Date(item.publishedAt || item.timestamp));
-
-          // Handle different content types
-          let additionalClass = '';
-          let additionalContent = '';
-
-          if (type === 'world') {
-              additionalClass = 'world-headline';
-              additionalContent = item.importance === 'high' ? '<span class="importance-badge">🔴 Important</span>' : '';
-          } else if (type === 'bigtech') {
-              additionalClass = 'bigtech-story';
-              additionalContent = item.category === 'big-tech' ? '<span class="tech-badge">💻 Tech</span>' : '';
-          } else if (type === 'local') {
-              additionalClass = 'local-data';
-              if (item.category === 'weather') {
-                  additionalContent = '<span class="weather-badge">🌤️ Weather</span>';
-              } else if (item.category === 'market') {
-                  additionalContent = '<span class="market-badge">📈 Market</span>';
-              }
-          }
-
-          if (type === 'repos') {
-              return `
-                  <div class="news-item ${additionalClass}">
-                      <div class="news-title">
-                          <a href="${item.url}" target="_blank">${item.name}</a>
-                      </div>
-                      <div class="news-meta">
-                          <span class="news-source">${item.owner}</span>
-                          <span class="news-time">${item.language || 'Unknown'}</span>
-                      </div>
-                      <div class="news-description">${item.description || 'No description available'}</div>
-                      <div class="repo-stats">
-                          <span>⭐ ${item.stars}</span>
-                          <span>📂 ${item.fullName}</span>
-                      </div>
-                  </div>
-              `;
-          }
-
-          return `
-              <div class="news-item ${additionalClass}">
-                  ${item.image ? `<img src="${item.image}" alt="Article image" class="news-image" onerror="this.style.display='none'">` : ''}
-                  <div class="news-title">
-                      <a href="${item.url}" target="_blank">${item.headline || item.title}</a>
-                  </div>
-                  <div class="news-meta">
-                      <span class="news-source">${item.source || item.category}</span>
-                      <span class="news-time">${timeAgo}</span>
-                      ${item.score ? `<span>⬆️ ${item.score}</span>` : ''}
-                      ${item.comments ? `<span>💬 ${item.comments}</span>` : ''}
-                      ${additionalContent}
-                  </div>
-                  <div class="news-description">${item.description || 'No description available'}</div>
-                  <div class="article-actions">
-                      <button onclick="fetchFullArticle('${item.url}', this)" class="fetch-article-btn">
-                          📖 Read Full Article
-                      </button>
-                  </div>
-                  <div class="full-article-content" style="display: none;">
-                      <!-- Full article content will be loaded here -->
-                  </div>
-              </div>
-          `;
+          return item;
       }
 
       // Get time ago string
@@ -991,7 +820,8 @@
           loadWeather();
           loadMarket();
           loadCrypto();
-          loadContent('scraped');
+          loadCategories();
+          loadNews();
       }
 
       // Auto-refresh widgets every 5 minutes
@@ -1001,16 +831,10 @@
           loadCrypto();
       }, 5 * 60 * 1000);
 
-      // Auto-refresh news every 30 seconds for dynamic content
+      // Auto-refresh news every 30 seconds
       setInterval(() => {
-          if (currentTab === 'scraped') {
-              loadContent('scraped');
-          } else if (currentTab === 'world') {
-              loadContent('world');
-          } else if (currentTab === 'bigtech') {
-              loadContent('bigtech');
-          } else if (currentTab === 'local') {
-              loadContent('local');
+          if (!currentSearch && currentPage === 1) {
+              loadNews(1, false);
           }
       }, 30000);
 
@@ -1159,23 +983,32 @@
           }
       }
 
-      // Load categories
+      // Load categories and create tabs
       async function loadCategories() {
           try {
               const response = await fetch('/api/categories');
               const data = await response.json();
-              const filters = document.getElementById('filters');
+              const categoryTabs = document.getElementById('categoryTabs');
 
-              if (filters) {
-                  filters.innerHTML = '<button class="filter-btn active" data-category="all">All</button>';
-
+              if (categoryTabs && data.categories) {
+                  // Keep the "All Articles" tab and add category tabs
                   data.categories.forEach(category => {
-                      const btn = document.createElement('button');
-                      btn.className = 'filter-btn';
-                      btn.dataset.category = category;
-                      btn.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-                      btn.onclick = () => filterByCategory(category);
-                      filters.appendChild(btn);
+                      if (category !== 'other') { // Skip 'other' category
+                          const btn = document.createElement('button');
+                          btn.className = 'news-tab';
+                          btn.dataset.category = category;
+                          
+                          // Format category name and add icon
+                          const icon = categoryIcons[category] || '📄';
+                          const displayName = category.replace(/_/g, ' ')
+                              .split(' ')
+                              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                              .join(' ');
+                          
+                          btn.innerHTML = `${icon} ${displayName}`;
+                          btn.onclick = () => switchCategory(category);
+                          categoryTabs.appendChild(btn);
+                      }
                   });
               }
           } catch (error) {
@@ -1250,56 +1083,7 @@
           }
       }
 
-      // Create news item element (for appendChild operations)
-      function createNewsItemElement(article) {
-          const item = document.createElement('div');
-          item.className = 'news-item';
 
-          const timeAgo = getTimeAgo(new Date(article.timestamp));
-
-          item.innerHTML = `
-              <div class="news-title">
-                  <a href="${article.url}" target="_blank">${article.headline || article.title}</a>
-              </div>
-              <div class="news-meta">
-                  <span class="news-category">${article.category}</span>
-                  <span class="news-mode">${article.mode}</span>
-                  <span class="news-time">${timeAgo}</span>
-              </div>
-              <div class="news-description">${article.description}</div>
-              <div class="news-url">${article.url}</div>
-          `;
-
-          return item;
-      }
-
-      // Get time ago string
-      function getTimeAgo(date) {
-          const now = new Date();
-          const diffMs = now - date;
-          const diffMins = Math.floor(diffMs / 60000);
-          const diffHours = Math.floor(diffMins / 60);
-          const diffDays = Math.floor(diffHours / 24);
-
-          if (diffMins < 1) return 'Just now';
-          if (diffMins < 60) return `${diffMins}m ago`;
-          if (diffHours < 24) return `${diffHours}h ago`;
-          return `${diffDays}d ago`;
-      }
-
-      // Filter by category
-      function filterByCategory(category) {
-          currentCategory = category;
-          currentSearch = '';
-          document.getElementById('searchInput').value = '';
-
-          // Update active filter button
-          document.querySelectorAll('.filter-btn').forEach(btn => {
-              btn.classList.toggle('active', btn.dataset.category === category);
-          });
-
-          loadNews(1, false);
-      }
 
       // Perform search
       function performSearch() {
@@ -1329,16 +1113,6 @@
           }
       });
 
-      // Auto-refresh every 30 seconds
-      setInterval(() => {
-          if (!currentSearch && currentCategory === 'all' && currentPage === 1) {
-              loadNews(1, false);
-          }
-      }, 30000);
-
-      // Initialize
-      loadCategories();
-      loadNews();
     </script>
   </body>
 </html>

@@ -1,9 +1,0 @@
-{
-	"id": "FUyYybFgManDeSv",
-	"json": "{\"id\":\"FUyYybFgManDeSv\",\"url\":\"https://tickets.formula1.com/en/h-formula1-hospitality\",\"uniqueKey\":\"https://tickets.formula1.com/en/h-formula1-hospitality\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://formula1.com/\",\"discoveredAt\":\"2025-07-19T05:41:52.687Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\"}}}",
-	"method": "GET",
-	"orderNo": 1752903712699,
-	"retryCount": 0,
-	"uniqueKey": "https://tickets.formula1.com/en/h-formula1-hospitality",
-	"url": "https://tickets.formula1.com/en/h-formula1-hospitality"
-}

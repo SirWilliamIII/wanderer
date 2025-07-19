@@ -1,9 +1,0 @@
-{
-	"id": "xUnJF7QtrMz2gkr",
-	"json": "{\"id\":\"xUnJF7QtrMz2gkr\",\"url\":\"https://www.f1authentics.com/\",\"uniqueKey\":\"https://www.f1authentics.com\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://formula1.com/\",\"discoveredAt\":\"2025-07-19T05:41:52.687Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\"}}}",
-	"method": "GET",
-	"orderNo": 1752903712698,
-	"retryCount": 0,
-	"uniqueKey": "https://www.f1authentics.com",
-	"url": "https://www.f1authentics.com/"
-}

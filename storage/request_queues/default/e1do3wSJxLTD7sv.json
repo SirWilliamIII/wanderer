@@ -1,9 +1,0 @@
-{
-	"id": "e1do3wSJxLTD7sv",
-	"json": "{\"id\":\"e1do3wSJxLTD7sv\",\"url\":\"https://github.com/enterprise\",\"loadedUrl\":\"https://github.com/enterprise\",\"uniqueKey\":\"https://github.com/enterprise\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:42:55.400Z\"}",
-	"method": "GET",
-	"orderNo": null,
-	"retryCount": 0,
-	"uniqueKey": "https://github.com/enterprise",
-	"url": "https://github.com/enterprise"
-}

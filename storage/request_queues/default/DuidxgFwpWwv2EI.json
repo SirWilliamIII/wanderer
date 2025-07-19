@@ -1,9 +1,0 @@
-{
-	"id": "DuidxgFwpWwv2EI",
-	"json": "{\"id\":\"DuidxgFwpWwv2EI\",\"url\":\"https://www.iana.org/domains/example\",\"loadedUrl\":\"https://www.iana.org/help/example-domains\",\"uniqueKey\":\"https://www.iana.org/domains/example\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://example.com\",\"discoveredAt\":\"2025-07-19T05:41:44.644Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:41:54.557Z\"}",
-	"method": "GET",
-	"orderNo": null,
-	"retryCount": 0,
-	"uniqueKey": "https://www.iana.org/domains/example",
-	"url": "https://www.iana.org/domains/example"
-}

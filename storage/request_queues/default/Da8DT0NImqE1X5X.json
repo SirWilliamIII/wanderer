@@ -1,9 +1,0 @@
-{
-	"id": "Da8DT0NImqE1X5X",
-	"json": "{\"id\":\"Da8DT0NImqE1X5X\",\"url\":\"https://www.whitehouse.gov/presidential-actions/executive-orders/\",\"loadedUrl\":\"https://www.whitehouse.gov/presidential-actions/executive-orders/\",\"uniqueKey\":\"https://www.whitehouse.gov/presidential-actions/executive-orders\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://www.whitehouse.gov/\",\"discoveredAt\":\"2025-07-19T05:41:46.813Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:41:59.681Z\"}",
-	"method": "GET",
-	"orderNo": null,
-	"retryCount": 0,
-	"uniqueKey": "https://www.whitehouse.gov/presidential-actions/executive-orders",
-	"url": "https://www.whitehouse.gov/presidential-actions/executive-orders/"
-}

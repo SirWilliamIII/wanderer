@@ -1,4 +1,7 @@
 // src/webapp.js - Main web application with news feed and admin portal
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from "express";
 import { WebSocketServer } from "ws";
 import { readFileSync, existsSync, watchFile } from "fs";

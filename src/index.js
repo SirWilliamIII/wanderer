@@ -1,4 +1,7 @@
 // src/index.js
+import dotenv from 'dotenv';
+dotenv.config();
+
 import { ScraperManager } from './ScraperManager.js';
 import { createWanderCrawler } from './wanderCrawler.js';
 import { createStrictCrawler } from './strictCrawler.js';

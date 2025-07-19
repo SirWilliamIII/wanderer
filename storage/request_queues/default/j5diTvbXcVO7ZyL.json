@@ -1,9 +1,0 @@
-{
-	"id": "j5diTvbXcVO7ZyL",
-	"json": "{\"id\":\"j5diTvbXcVO7ZyL\",\"url\":\"https://f1store.formula1.com/en/?_s=bm-fi-f1-prtsite-topnav-230720-jm\",\"uniqueKey\":\"https://f1store.formula1.com/en?_s=bm-fi-f1-prtsite-topnav-230720-jm\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://formula1.com/\",\"discoveredAt\":\"2025-07-19T05:41:52.687Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\"}}}",
-	"method": "GET",
-	"orderNo": 1752903712698,
-	"retryCount": 0,
-	"uniqueKey": "https://f1store.formula1.com/en?_s=bm-fi-f1-prtsite-topnav-230720-jm",
-	"url": "https://f1store.formula1.com/en/?_s=bm-fi-f1-prtsite-topnav-230720-jm"
-}

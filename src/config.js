@@ -83,9 +83,15 @@ export const WANDERER_CONFIG = {
         COLLECTION_SIZE_THRESHOLD: parseInt(process.env.COLLECTION_THRESHOLD) || 1000,
         
         // Simple classification categories
-        CATEGORIES: ['ecommerce', 'news', 'docs', 'forum', 'github', 'big_technology', 'local_area_data', 'general', 'other'],
+        CATEGORIES: ['ecommerce', 'news', 'local_news', 'docs', 'forum', 'github', 'big_technology', 'sports', 'science', 'rabbit_hole', 'general', 'other'],
         
         // Auto-create monthly collections
         AUTO_CREATE_COLLECTIONS: true
+    },
+    
+    // CORS Proxy configuration
+    CORS_PROXY: {
+        url: process.env.WANDERER_PROXY_URL || 'https://wanderer-proxy.workers.dev',
+        enabled: process.env.USE_CORS_PROXY === 'true' || false
     }
 };

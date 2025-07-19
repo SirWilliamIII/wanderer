@@ -1,60 +1,48 @@
 {
-  "requestsFinished": 131,
-  "requestsFailed": 12,
-  "requestsRetries": 36,
-  "requestsFailedPerMinute": 5,
-  "requestsFinishedPerMinute": 65,
-  "requestMinDurationMillis": 2667,
-  "requestMaxDurationMillis": 11527,
-  "requestTotalFailedDurationMillis": 35953,
-  "requestTotalFinishedDurationMillis": 633625,
-  "crawlerStartedAt": "2025-07-19T05:41:39.622Z",
-  "crawlerFinishedAt": null,
-  "statsPersistedAt": "2025-07-19T05:43:39.677Z",
-  "crawlerRuntimeMillis": 120138,
-  "crawlerLastStartTimestamp": 1752903699539,
+  "requestsFinished": 0,
+  "requestsFailed": 2,
+  "requestsRetries": 2,
+  "requestsFailedPerMinute": 7,
+  "requestsFinishedPerMinute": 0,
+  "requestMinDurationMillis": null,
+  "requestMaxDurationMillis": 0,
+  "requestTotalFailedDurationMillis": 13614,
+  "requestTotalFinishedDurationMillis": 0,
+  "crawlerStartedAt": "2025-07-19T19:01:45.761Z",
+  "crawlerFinishedAt": "2025-07-19T19:02:00.723Z",
+  "statsPersistedAt": "2025-07-19T19:02:00.723Z",
+  "crawlerRuntimeMillis": 15026,
+  "crawlerLastStartTimestamp": 1752951705697,
   "requestRetryHistogram": [
-    107,
-    7,
-    9,
-    13,
-    5,
+    null,
+    null,
     null,
     1,
+    null,
     1
   ],
   "statsId": 0,
-  "requestAvgFailedDurationMillis": 2996,
-  "requestAvgFinishedDurationMillis": 4837,
-  "requestTotalDurationMillis": 669578,
-  "requestsTotal": 143,
+  "requestAvgFailedDurationMillis": 6807,
+  "requestAvgFinishedDurationMillis": null,
+  "requestTotalDurationMillis": 13614,
+  "requestsTotal": 2,
   "requestsWithStatusCode": {
-    "200": 142,
-    "429": 16
+    "200": 1
   },
   "errors": {
+    "/Users/will/Programming/WebScraping/wanderer/node_modules/@crawlee/playwright/internals/utils/playwright-utils.js:166:17": {
+      "missing error code": {
+        "Error": {
+          "page.goto: net::ERR_HTTP2_SERVER_REFUSED_STREAM at https://theverge.com/": {
+            "count": 1
+          }
+        }
+      }
+    },
     "/Users/will/Programming/WebScraping/wanderer/src/wanderCrawler.js:43:28": {
       "missing error code": {
         "TimeoutError": {
           "page.waitForLoadState: Timeout 10000ms exceeded.": {
-            "count": 3
-          }
-        }
-      }
-    },
-    "/Users/will/Programming/WebScraping/wanderer/node_modules/@crawlee/playwright/internals/utils/playwright-utils.js:166:17": {
-      "missing error code": {
-        "Error": {
-          "page.goto: net::ERR_HTTP2_SERVER_REFUSED_STREAM at _": {
-            "count": 8
-          }
-        }
-      }
-    },
-    "/Users/will/Programming/WebScraping/wanderer/node_modules/@crawlee/basic/internals/basic-crawler.js:835:19": {
-      "missing error code": {
-        "Error": {
-          "Request blocked - received 429 status code.": {
             "count": 1
           }
         }
@@ -66,7 +54,7 @@
       "missing error code": {
         "Error": {
           "page.goto: net::ERR_HTTP2_SERVER_REFUSED_STREAM at _": {
-            "count": 34
+            "count": 2
           }
         }
       }
@@ -75,25 +63,7 @@
       "missing error code": {
         "Error": {
           "Detected a session error, rotating session... ": {
-            "count": 72
-          }
-        }
-      }
-    },
-    "/Users/will/Programming/WebScraping/wanderer/src/wanderCrawler.js:43:28": {
-      "missing error code": {
-        "TimeoutError": {
-          "page.waitForLoadState: Timeout 10000ms exceeded.": {
-            "count": 7
-          }
-        }
-      }
-    },
-    "/Users/will/Programming/WebScraping/wanderer/node_modules/@crawlee/basic/internals/basic-crawler.js:835:19": {
-      "missing error code": {
-        "Error": {
-          "Request blocked - received 429 status code.": {
-            "count": 15
+            "count": 6
           }
         }
       }

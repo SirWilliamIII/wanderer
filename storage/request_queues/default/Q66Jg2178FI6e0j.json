@@ -1,9 +1,0 @@
-{
-	"id": "Q66Jg2178FI6e0j",
-	"json": "{\"id\":\"Q66Jg2178FI6e0j\",\"url\":\"https://github.com/trending/ispc?since=daily\",\"uniqueKey\":\"https://github.com/trending/ispc?since=daily\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\"}}}",
-	"method": "GET",
-	"orderNo": 1752903710082,
-	"retryCount": 0,
-	"uniqueKey": "https://github.com/trending/ispc?since=daily",
-	"url": "https://github.com/trending/ispc?since=daily"
-}

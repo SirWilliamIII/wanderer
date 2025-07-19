@@ -1,9 +1,0 @@
-{
-	"id": "8pwDtN1XKySllgZ",
-	"json": "{\"id\":\"8pwDtN1XKySllgZ\",\"url\":\"https://github.com/trending?spoken_language_code=ab\",\"loadedUrl\":\"https://github.com/trending?spoken_language_code=ab\",\"uniqueKey\":\"https://github.com/trending?spoken_language_code=ab\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"depth\":1,\"parentUrl\":\"https://github.com/trending\",\"discoveredAt\":\"2025-07-19T05:41:49.849Z\",\"__crawlee\":{\"enqueueStrategy\":\"all\",\"state\":4,\"lastProxyTier\":0,\"forefront\":true}},\"handledAt\":\"2025-07-19T05:43:20.326Z\"}",
-	"method": "GET",
-	"orderNo": null,
-	"retryCount": 0,
-	"uniqueKey": "https://github.com/trending?spoken_language_code=ab",
-	"url": "https://github.com/trending?spoken_language_code=ab"
-}
